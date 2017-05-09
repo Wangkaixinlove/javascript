@@ -1,0 +1,86 @@
+第一节
+1.练习①：输入-获取-输出
+<script>
+	var name=prompt("please enter your name"," ");
+	var greeting="hello"+name+"!";
+	document.write(greeting);
+</script>
+2.控制结构
+顺序
+判断
+循环
+3.数据类型
+数字型：不区分数字类型,初始是浮点型？
+逻辑（布尔）型：true false
+字符串型：不区分字符与字符串 一个字符串变量可以有数字但是不能对这样的数字进行计算
+练习②：
+用js代码计算两件衣服在网上商店的费用，用户输入每件衣服的价格，折扣88折。（提示：parseFloat();prompt();）
+<script>
+	var item1=parseFloat(prompt("enter the cost of the first"," "));
+	var item2=parseFloat(prompt("enter the cost of the second"," "));
+	var sale=0.88;
+	var total=item1+item2;
+	document.write("<p>the cost of all is $"+total*sale+"!</p>")
+</script>
+4.赋值语句
+var temp;//声明变量时不一定都要赋值，这时，这个变量是未定义的。
+5.对数据的操作
+算数操作符+ - * / %
+赋值操作符= += -= *= /= %=
+用于字符串的连接操作符+
+6.流程图
+7.<script></script>标签
+html5默认类型js 一般注明文件类型 javascript/text
+尽量避免使用内置js函数，使用js文件代替内置js
+会使代码变大；难维护；不会缓存，每次都要重新加载
+8.onload事件
+作用：一旦页面或者图像加载完成，就执行一些js代码。
+9.对象
+含有属性和函数的任何东西都是对象。
+属性是对象共同具有的特征特点或者特色；函数（方法）是对象执行或被执行的操作。
+10.文档对象
+document是window对象的子对象
+document对象方法：
+open() close() write（） writeln() //加换行
+getElementById() getElementByName()  getElementByTagName() 
+11.点标记
+eg:document.write()
+12.write()方法
+document.write() 用于显示文本 
+显示不同格式文本可在括号内添加不同标签 注意用双引号引起来
+13.getElementById()
+访问网页特定元素，括号内写id属性值
+14.innerHTML
+设置或返回元素内部的HTML代码 注意input类型没有 因为是单标签
+15.练习③
+使用getElementById() write()和innerHTML展示如何访问网页上的内容，然后使用它显示一条新信息
+<script>
+    function show(){
+    var name=document.getElementById('name');
+    alert("您输入的名字是"+name.value+"！");
+    }
+</script>
+16.open() close()
+打开新窗口：window.open(URL,name,specs,replace)
+参数含义：URL 指定要打开页面的网址 name指定窗口的名字 specs指定窗口的大小或者位置 replace 是否新建条目
+关闭已打开的窗口：window.close（）
+<script>
+	function openWin(){
+	   window.open("","","width=300,height=200");
+	}
+	function closeWin(){
+	   window.close();
+	}
+</script>
+<body>
+	<input type="button" value="新窗口" onclick="openWin()">
+	<input type="button" value="关闭窗口" onclick="closeWin()">
+</body>
+
+
+
+
+
+
+
+
