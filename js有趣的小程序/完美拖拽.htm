@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>完美拖拽</title>
+<style type="text/css">
+html,body{overflow:hidden;}
+body,div,h2,p{margin:0;padding:0;}
+body{color:#fff;background:#000;font:12px/2 Arial;}
+p{padding:0 10px;margin-top:10px;}
+span{color:#ff0;padding-left:5px;}
+#box{position:absolute;width:300px;height:150px;background:#333;border:2px solid #ccc;top:50%;left:50%;margin:-75px 0 0 -150px;}
+#box h2{height:35px;cursor:move;background:#222;border-bottom:2px solid #ccc;text-align:right;padding:0 10px;}
+#box h2 a{color:#fff;font:12px/25px Arial;text-decoration:none;outline:none;}
+</style>
+<script type="text/javascript">
+window.onload=function(){
+	var positionArray = [];
+
+	var box = document.getElementById("box");
+	var tit = document.getElementById("tit");
+	tit.onmousedown = function(evt){
+		var x = evt.offsetX;
+		var y = evt.offsetY;
+		document.onmousemove = function(evt){
+			
+			box.style.left = evt.clientX - x + "px";
+			box.style.top = evt.clientY - y + "px";
+			console.log({left:box.offsetLeft, top: box.offsetTop})
+			positionArray.push({left:box.offsetLeft, top: box.offsetTop});
+		}
+	}
+	
+	tit.onmouseup = function(){
+		document.onmousemove = null;
+	}
+	tit.firstChild.onmousedown = function(evt){
+		evt.stopPropagation();
+	}
+	
+	tit.firstChild.onclick = function(){
+		var timer = setInterval(function(){
+			if(positionArray.length <= 0) {
+				clearInterval(timer);
+				return;
+			}
+			var pos = positionArray.pop();
+			box.style.left = pos.left+"px";
+			box.style.top = pos.top+"px";
+			
+		},30);
+		
+	}
+};
+</script>
+</head>
+<body>
+<div id="box" style="margin-left: 0px; margin-top: 0px; left: 533px; top: 231px;">
+    <h2 id="tit"><a href="javascript:;">点击回放拖动轨迹</a></h2>
+    <p><strong>Drag:</strong><span>false</span></p>
+    <p><strong>offsetTop:</strong><span>231</span></p>
+    <p><strong>offsetLeft:</strong><span>533</span></p>
+</div>
+
+
+</body></html>
